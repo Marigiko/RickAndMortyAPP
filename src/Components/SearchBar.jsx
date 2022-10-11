@@ -16,11 +16,17 @@ const SearchBar = () => {
             .then(res => {
                 const elementsBySpecies = res.data.results.filter((e) => e.species === specieValue);
                 const elementsByStatus = res.data.results.filter((e) => e.status === statusValue);
-                if(specieValue !== undefined) {
+                console.log("ASDASDASDASDASDASDASDAS",elementsByStatus.length);
+                if(elementsBySpecies.length !== 0) {
                     setApiState(elementsBySpecies);
                 }
-                if(statusValue !== undefined) {
+
+                if(elementsByStatus.length !== 0) {
                     setApiState(elementsByStatus);
+                }
+                
+                if(elementsByStatus.length === 0 && elementsBySpecies.length === 0) {
+                    setApiState(res.data.results);
                 }
         })
 
