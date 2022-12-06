@@ -1,5 +1,5 @@
 import React, { useRef, useContext } from 'react';
-import { AppContext } from './provider';
+import { AppContext } from '../Handlers/provider';
 import axios from 'axios';
 
 const SearchBar = () => {
@@ -7,8 +7,10 @@ const SearchBar = () => {
     const inputSpecie = useRef(null);
     const inputStatus = useRef(null);
     const [apiState, setApiState] = useContext(AppContext);
+    // static contextType = AppContext;
 
     const search = async () => {
+        /* const { data, setData } = this.context; */
         const specieValue = inputSpecie.current.value;
         const statusValue = inputStatus.current.value;
 
